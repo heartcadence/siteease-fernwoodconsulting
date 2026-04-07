@@ -100,21 +100,9 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: var(--navy);
-    }
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .45;
-    }
-    /* Fallback gradient when no image */
-    .hero-bg-fallback {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #788066 0%, #8f9878 60%, #a3ae96 100%);
+      background:
+        linear-gradient(to right, rgba(50,54,42,0.82) 45%, rgba(50,54,42,0.45) 100%),
+        url('images/hero-team.jpg') center / cover no-repeat;
     }
     .hero-content {
       position: relative;
@@ -433,9 +421,6 @@
 
 <!-- ── HERO ─────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-bg-fallback"></div>
-  <!-- Replace src with your actual hero photo -->
-  <img class="hero-img" src="stitch/screen.png" alt="Team meeting" />
   <div class="hero-content">
     <h1>Empowering People.<br>Inspiring Success.</h1>
     <p>Fernwood Consulting Limited delivers strategic growth solutions for SMEs and Non-profits. Unlock your potential today.</p>
