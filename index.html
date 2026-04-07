@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fernwood Consulting – Empowering People. Inspiring Success.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Courier+Prime:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #788066;
+      --gold:  #E8A020;
+      --gold-hover: #d4911a;
+      --text:  #1a1a1a;
+      --muted: #555;
+      --light: #f7f7f7;
+      --white: #ffffff;
+      --card-border: #e2e2e2;
+    }
+
+    body { font-family: 'Inter', sans-serif; color: var(--text); }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+    }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--navy);
+    }
+    .logo-text { line-height: 1.1; }
+    .logo-text strong { display: block; font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+    .logo-text span   { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: .75; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      opacity: .85;
+      transition: opacity .2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links .has-arrow::after {
+      content: ' ▾';
+      font-size: 11px;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-gold:hover { background: var(--gold-hover); }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .45;
+    }
+    /* Fallback gradient when no image */
+    .hero-bg-fallback {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #788066 0%, #8f9878 60%, #a3ae96 100%);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      max-width: 580px;
+      margin-left: max(24px, calc(50vw - 550px));
+    }
+    .hero-content h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero-content p {
+      font-size: 16px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.6;
+      max-width: 440px;
+      margin-bottom: 32px;
+    }
+    .btn-gold-outline {
+      display: inline-block;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-gold-outline:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* ── TRUST GRID ──────────────────────────────────── */
+    .trust-grid {
+      background: var(--white);
+      padding: 72px 24px;
+    }
+    .trust-grid h2 {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .cards {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .card {
+      border: 1.5px solid var(--card-border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: box-shadow .2s;
+    }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .card-icon svg { width: 100%; height: 100%; }
+    .card-body h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .card-body p  { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+    /* ── CHESS SECTION ───────────────────────────────── */
+    .chess-section {
+      background: var(--navy);
+      padding: 80px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .chess-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .chess-text h2 {
+      font-family: 'Courier Prime', 'Courier New', monospace;
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    .chess-text p {
+      font-family: 'Courier Prime', 'Courier New', monospace;
+      font-size: 15px;
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+    .chess-graphic {
+      width: 260px;
+      flex-shrink: 0;
+      opacity: .2;
+    }
+    .chess-graphic svg { width: 100%; }
+
+    /* ── SOCIAL PROOF ────────────────────────────────── */
+    .social-proof {
+      background: var(--light);
+      padding: 72px 24px;
+    }
+    .social-proof-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .social-proof h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 36px;
+    }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .consultant-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .consultant-card img {
+      width: 110px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+      background: #ccc;
+    }
+    .consultant-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .consultant-info p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    .testimonial { position: relative; padding-top: 12px; }
+    .quote-mark {
+      font-size: 80px;
+      color: var(--gold);
+      line-height: .5;
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+    }
+    .testimonial blockquote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .testimonial cite {
+      font-size: 14px;
+      color: var(--muted);
+      font-style: normal;
+    }
+    .testimonial cite strong { color: var(--text); font-weight: 600; }
+
+    /* ── CTA / CONTACT ───────────────────────────────── */
+    .cta-section {
+      background: var(--navy);
+      padding: 72px 24px;
+    }
+    .cta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
+      align-items: start;
+    }
+    .cta-form h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .form-row.single { grid-template-columns: 1fr 1fr; }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(255,255,255,.2);
+      border-radius: 6px;
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s;
+    }
+    input::placeholder { color: rgba(255,255,255,.5); }
+    input:focus { border-color: var(--gold); }
+
+    .form-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 0;
+    }
+    .btn-submit {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--gold-hover); }
+
+    .cta-contact {
+      color: var(--white);
+      padding-top: 40px;
+    }
+    .cta-contact p {
+      font-size: 14px;
+      line-height: 1.8;
+      opacity: .85;
+    }
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .social-icons a {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(255,255,255,.4);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: border-color .2s, background .2s;
+    }
+    .social-icons a:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+    .social-icons svg { width: 18px; height: 18px; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 20px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .logo { font-size: 13px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.55); }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .cards { grid-template-columns: 1fr; }
+      .chess-inner { grid-template-columns: 1fr; }
+      .chess-graphic { display: none; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .form-row, .form-bottom { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">F</div>
+      <div class="logo-text">
+        <strong>Fernwood</strong>
+        <span>Consulting</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" class="has-arrow">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#chess">Business of Chess</a></li>
+      <li><a href="#contact"><button class="btn-gold">Free Audit</button></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg-fallback"></div>
+  <!-- Replace src with your actual hero photo -->
+  <img class="hero-img" src="stitch/screen.png" alt="Team meeting" />
+  <div class="hero-content">
+    <h1>Empowering People.<br>Inspiring Success.</h1>
+    <p>Fernwood Consulting Limited delivers strategic growth solutions for SMEs and Non-profits. Unlock your potential today.</p>
+    <a href="#contact" class="btn-gold-outline">Get a Free Audit</a>
+  </div>
+</section>
+
+<!-- ── TRUST GRID ────────────────────────────────────────── -->
+<section class="trust-grid" id="services">
+  <h2>The Trust Grid</h2>
+  <div class="cards">
+
+    <!-- HR Management -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="20" r="9" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M26 31c-8 0-14 4-14 9h28c0-5-6-9-14-9z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="36" cy="14" r="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M36 9c1-1 3-1.5 5-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M36 9c0 0 2 1 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>HR Management</h3>
+        <p>Optimize your human resources for maximum performance and retention.</p>
+      </div>
+    </div>
+
+    <!-- Strategic Planning -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="18" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="26" cy="26" r="3" fill="currentColor"/>
+          <line x1="26" y1="8" x2="26" y2="14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="26" y1="38" x2="26" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="8" y1="26" x2="14" y2="26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="38" y1="26" x2="44" y2="26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="26" y1="26" x2="33" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="26" y1="26" x2="30" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>Strategic Planning</h3>
+        <p>Develop actionable roadmaps for long-term business growth.</p>
+      </div>
+    </div>
+
+    <!-- Business Mentoring -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="14" r="5" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M26 21v8l-4 6h8l-4-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+          <circle cx="38" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+          <path d="M10 44h8M34 44h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M22 35l-6 1M30 35l6 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>Business Mentoring</h3>
+        <p>Guidance from experienced professionals to navigate challenges.</p>
+      </div>
+    </div>
+
+    <!-- Start-up Support -->
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M26 42c0 0-10-8-10-18a10 10 0 0120 0c0 10-10 18-10 18z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="26" cy="24" r="3.5" fill="currentColor"/>
+          <path d="M14 38l-4 4M38 38l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M18 44h4M30 44h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <h3>Start-up Support</h3>
+        <p>Foundational services to launch and scale your new venture successfully.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CHESS SECTION ──────────────────────────────────────── -->
+<section class="chess-section" id="chess">
+  <div class="chess-inner">
+    <div class="chess-text">
+      <h2>THE BUSINESS OF CHESS:<br>TACTICS FOR SUCCESS</h2>
+      <p>In chess and business, every move matters. We translate the principles of strategy, foresight, and calculated risk-taking from the chessboard into actionable business plans. Anticipate competitor moves, control the board, and achieve checkmate in your market.</p>
+    </div>
+    <div class="chess-graphic">
+      <!-- Chess knight SVG -->
+      <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="200" width="160" height="14" rx="4" fill="white" opacity=".3"/>
+        <rect x="40" y="188" width="120" height="16" rx="4" fill="white" opacity=".3"/>
+        <path d="M70 185c0 0-10-40 5-65 10-17 30-40 50-50-5 10-8 25-5 35 10-15 25-20 40-18-15 8-25 20-28 38 20-5 35 5 42 20-15-5-32-2-42 10 15 5 25 18 25 35H70z" fill="white" opacity=".5"/>
+        <circle cx="105" cy="65" r="8" fill="white" opacity=".6"/>
+        <path d="M75 130c5-10 15-20 30-25" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ───────────────────────────────────────── -->
+<section class="social-proof" id="about">
+  <div class="social-proof-inner">
+    <h2>Social Proof</h2>
+    <div class="proof-grid">
+      <div class="consultant-card">
+        <!-- Replace src with actual photo of Leigh Sherry -->
+        <img src="" alt="Leigh Sherry, MBA" onerror="this.style.background='#c5cbe8';this.removeAttribute('onerror')" />
+        <div class="consultant-info">
+          <h3>Leigh Sherry, MBA</h3>
+          <p>Founder &amp; Principal Consultant.<br>Over 20 years of experience driving organizational effectiveness and strategic growth.</p>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>
+          "Leigh has an uncanny ability to deal with complex issues using a personal and straightforward approach. If you want a coach to improve your organizations effectiveness, Leigh can get you one step closer to your goals."
+        </blockquote>
+        <cite><strong>Samuel Donkor</strong>, Executive Director, ANIDA.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA / CONTACT ──────────────────────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-form">
+      <h2>Unlock Your Growth Potential – Get a Free Audit</h2>
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+        </div>
+        <div class="form-bottom">
+          <input type="tel" placeholder="Phone Number" />
+          <button type="submit" class="btn-submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="cta-contact">
+      <p>442 Grey St Unit G, Brantford, ON N3S 7N3<br>
+         leigh@fernwoodconsultingliimited.com<br>
+         tel: +1(225) 802-6582</p>
+      <div class="social-icons">
+        <!-- LinkedIn -->
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">F</div>
+      <div class="logo-text">
+        <strong>Fernwood</strong>
+      </div>
+    </a>
+    <span class="footer-copy">© Copyright at Fernwood</span>
+  </div>
+</footer>
+
+</body>
+</html>
